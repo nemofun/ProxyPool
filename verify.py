@@ -16,9 +16,9 @@ def get_current_time():
     return time.strftime('%Y-%m-%d %X', time.localtime())
 
 
-class VerifyIP(threading.Thread):
+class IsEnable(threading.Thread):
     def __init__(self, ip):
-        super(VerifyIP, self).__init__()
+        super(IsEnable, self).__init__()
         self.ip = ip
         self.proxies = {
             'http': 'http://%s' % (ip)
@@ -79,7 +79,7 @@ def verify():
                 count += 1
             except:
                 break
-            work = VerifyIP(ip)
+            work = IsEnable(ip)
             work.setDaemon(True)
             work.start()
         time.sleep(5)

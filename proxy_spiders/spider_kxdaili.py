@@ -28,7 +28,7 @@ def crawl():
                 page += 1
                 table = BeautifulSoup(html, 'lxml').find('table').find_all('tr')
             except Exception as e:
-                print('[%s][Spider][kxdaili]ERROR!' % get_current_time(), logging.exception(e))
+                print('[%s][Spider][kxdaili]ERROR!' % get_current_time(), logging.log(e))
                 continue
             for tr in table[1:]:
                 try:
