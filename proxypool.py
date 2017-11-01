@@ -4,7 +4,6 @@ import time
 import pymysql
 import json
 
-from proxy_spiders.spider_ipcn import SpiderIpcn
 from proxy_spiders.spider_66ip import SpiderIP66
 from proxy_spiders.spider_kxdaili import SpiderKxdaili
 from proxy_spiders.spider_89ip import SpiderIP89
@@ -12,6 +11,7 @@ from proxy_spiders.spider_data5u import SpiderData5u
 from proxy_spiders.spider_ip181 import SpiderIP181
 from proxy_spiders.spider_xicidaili import SpiderXicidaili
 from proxy_spiders.spider_coderbusy import SpiderCoderBusy
+from proxy_spiders.spider_mimvp import SpiderMimvp
 
 from conf import MYSQL_CONF
 
@@ -57,7 +57,9 @@ def get_current_time():
 
 if __name__ == '__main__':
     lock = threading.Lock()
-    crawlers = [SpiderCoderBusy, SpiderIP66, SpiderIP89]
+    crawlers = [SpiderMimvp, SpiderCoderBusy, SpiderIP66, SpiderIP89,
+                SpiderKxdaili, SpiderData5u, SpiderIP181,
+                SpiderXicidaili]
 
     while True:
         crawl_ip_count = 0
@@ -104,4 +106,4 @@ if __name__ == '__main__':
         print('[%s][ProxyPool]Crawl IP Count:' %
               get_current_time(), crawl_ip_count)
         print('[%s][ProxyPool][Sleeping]' % get_current_time())
-        time.sleep(300)
+        time.sleep(600)
