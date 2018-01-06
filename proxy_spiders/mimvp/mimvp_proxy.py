@@ -20,10 +20,10 @@ def get_current_time():
 
 
 def mimvp_proxy():
-    urls = ['http://proxy.mimvp.com/free.php?proxy=in_hp'
-            , 'http://proxy.mimvp.com/free.php?proxy=out_hp'
-            ,'http://proxy.mimvp.com/free.php?proxy=in_tp'
-            , 'http://proxy.mimvp.com/free.php?proxy=out_tp']
+    urls = ['http://proxy.mimvp.com/free.php?proxy=in_hp',
+            'http://proxy.mimvp.com/free.php?proxy=out_hp',
+            'http://proxy.mimvp.com/free.php?proxy=in_tp',
+            'http://proxy.mimvp.com/free.php?proxy=out_tp']
     result = []
     imageRecognize = CaptchaRecognize()
     for url in urls:

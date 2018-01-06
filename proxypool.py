@@ -25,8 +25,7 @@ class IsEnable(threading.Thread):
 
     def run(self):
         try:
-            html = requests.get('http://httpbin.org/ip',
-                                proxies=self.proxies, timeout=5).text
+            html = requests.get('http://httpbin.org/ip', proxies=self.proxies, timeout=5).text
             result = eval(html)['origin']
             if len(result.split(',')) == 2:
                 return
@@ -105,4 +104,4 @@ if __name__ == '__main__':
         print('[%s][ProxyPool]Crawl IP Count:' %
               get_current_time(), crawl_ip_count)
         print('[%s][ProxyPool][Sleeping]' % get_current_time())
-        time.sleep(3000)
+        time.sleep(600)
