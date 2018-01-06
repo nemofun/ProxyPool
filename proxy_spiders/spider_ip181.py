@@ -16,7 +16,9 @@ def get_current_time():
 
 
 def crawl():
-    urls = ['http://www.ip181.com/daili/2.html', 'http://www.ip181.com/daili/1.html']
+    urls = ['http://www.ip181.com/daili/3.html',
+            'http://www.ip181.com/daili/2.html',
+            'http://www.ip181.com/daili/1.html']
     result = []
     for pageurl in urls:
         try:
