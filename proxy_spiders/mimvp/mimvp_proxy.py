@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 from PIL import Image
 import re
 from .recognize import CaptchaRecognize, convert_image
-import logging
 import time
 
 headers = {
