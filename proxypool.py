@@ -2,7 +2,6 @@ import requests
 import threading
 import time
 import pymysql
-import json
 
 from proxy_spiders.spider_66ip import SpiderIP66
 from proxy_spiders.spider_kxdaili import SpiderKxdaili
@@ -106,4 +105,4 @@ if __name__ == '__main__':
         print('[%s][ProxyPool]Crawl IP Count:' %
               get_current_time(), crawl_ip_count)
         print('[%s][ProxyPool][Sleeping]' % get_current_time())
-        time.sleep(600)
+        time.sleep(3000)

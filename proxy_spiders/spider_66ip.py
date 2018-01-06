@@ -4,10 +4,10 @@ import time
 import threading
 
 headers = {
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Encoding": "gzip, deflate",
-    "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-TW;q=0.6",
-    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36"}
+    "Accept-Language": "en-US,en;q=0.5",
+    "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:39.0) Gecko/20100101 Firefox/39.0"}
 
 
 def get_current_time():
@@ -21,7 +21,7 @@ def crawl():
     result = []
     for pageurl in urls:
         try:
-            html = requests.get(pageurl, headers=headers, timeout=300).text
+            html = requests.get(pageurl, headers=headers, timeout=3000).text
         except Exception as e:
             print('[%s][Spider][66ip]Error:' % get_current_time(), e)
             continue

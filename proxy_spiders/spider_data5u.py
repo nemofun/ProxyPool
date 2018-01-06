@@ -1,6 +1,4 @@
 import requests
-import re
-import logging
 import time
 import threading
 from bs4 import BeautifulSoup
@@ -18,11 +16,11 @@ def get_current_time():
 
 
 def crawl():
-    urls = ['http://www.data5u.com/free/gngn/index.shtml','http://www.data5u.com/free/gwgn/index.shtml']
+    urls = ['http://www.data5u.com/free/gngn/index.shtml', 'http://www.data5u.com/free/gwgn/index.shtml']
     result = []
     for url in urls:
         try:
-            html = requests.get(url, headers=headers, timeout=10).text
+            html = requests.get(url, headers=headers, timeout=1000).text
             table = BeautifulSoup(html, 'lxml').find_all('ul', {"class": 'l2'})
         except Exception as e:
             print('[%s][Spider][data5u]Error:' % get_current_time(), e)

@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-import logging
 import time
 import threading
 
@@ -24,7 +23,7 @@ def crawl():
         page = 1
         while page <= 10:
             try:
-                html = requests.get(url % (page), headers=headers, timeout=30).text.encode('ISO-8859-1').decode('utf-8',
+                html = requests.get(url % (page), headers=headers, timeout=1000).text.encode('ISO-8859-1').decode('utf-8',
                                                                                                                 'ignore')
                 page += 1
                 table = BeautifulSoup(html, 'lxml').find(

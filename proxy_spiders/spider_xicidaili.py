@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-import logging
 import time
 import threading
 
@@ -22,7 +21,7 @@ def crawl():
     result = []
     for url in urls:
         try:
-            html = requests.get(url, headers=headers, timeout=30).text
+            html = requests.get(url, headers=headers, timeout=1000).text
             table = BeautifulSoup(html, 'lxml').find('table', id='ip_list').find_all('tr')
         except Exception as e:
             print('[%s][Spider][xicidaili]ERROR!' % get_current_time(), e)

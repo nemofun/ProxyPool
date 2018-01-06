@@ -22,7 +22,7 @@ def crawl():
     for page in range(5):
         url = 'https://proxy.coderbusy.com/classical/anonymous-type/highanonymous/p%s.aspx' % (page + 1)
         try:
-            html = requests.get(url, headers=headers, timeout=5).text
+            html = requests.get(url, headers=headers, timeout=1000).text
             table = BeautifulSoup(html, 'lxml').find('table', {'class': 'table-bordered'}).find_all('tr')
         except Exception as e:
             print('[%s][Spider][CoderBusy]Error:' % get_current_time(), e)
