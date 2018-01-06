@@ -21,7 +21,7 @@ def crawl():
     result = []
     for pageurl in urls:
         try:
-            html = requests.get(pageurl, headers=headers, timeout=3000).text
+            html = requests.get(pageurl, headers=headers, timeout=30).text
         except Exception as e:
             print('[%s][Spider][66ip]Error:' % get_current_time(), e)
             continue
@@ -38,3 +38,6 @@ class SpiderIP66(threading.Thread):
 
     def run(self):
         self.result = crawl()
+
+if __name__ == '__main__':
+    crawl()

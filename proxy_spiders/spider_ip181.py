@@ -20,8 +20,9 @@ def crawl():
     result = []
     for pageurl in urls:
         try:
-            html = requests.get(pageurl, headers=headers, timeout=1000).text
-            table = BeautifulSoup(html, 'lxml').find('table', {'class': 'ctable'}).find_all('tr')
+            html = requests.get(pageurl, headers=headers, timeout=30).text
+            html = BeautifulSoup(html, 'lxml').find('table', {'class': 'ctable'})
+            table = html.find_all('tr') if html is not None else []
         except Exception as e:
             print('[%s][Spider][ip181]Error:' % get_current_time(), e)
             continue
@@ -44,3 +45,6 @@ class SpiderIP181(threading.Thread):
 
     def run(self):
         self.result = crawl()
+
+if __name__ == '__main__':
+    crawl()

@@ -20,7 +20,7 @@ def crawl():
     result = []
     for url in urls:
         try:
-            html = requests.get(url, headers=headers, timeout=1000).text
+            html = requests.get(url, headers=headers, timeout=30).text
             table = BeautifulSoup(html, 'lxml').find_all('ul', {"class": 'l2'})
         except Exception as e:
             print('[%s][Spider][data5u]Error:' % get_current_time(), e)
@@ -44,3 +44,6 @@ class SpiderData5u(threading.Thread):
 
     def run(self):
         self.result = crawl()
+
+if __name__ == '__main__':
+    crawl()

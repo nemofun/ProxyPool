@@ -1,6 +1,4 @@
 import requests
-import re
-import logging
 import time
 import threading
 from bs4 import BeautifulSoup
@@ -20,10 +18,10 @@ def get_current_time():
 def crawl():
     result = []
     for page in range(5):
-        url = 'https://proxy.coderbusy.com/classical/anonymous-type/highanonymous/p%s.aspx' % (page + 1)
+        url = 'https://proxy.coderbusy.com/zh-cn/classical/anonymous-type/highanonymous/p%s.aspx' % (page + 1)
         try:
-            html = requests.get(url, headers=headers, timeout=1000).text
-            html = BeautifulSoup(html, 'lxml').find('table', {'class': 'table-bordered'})
+            html = requests.get(url, headers=headers, timeout=30).text
+            html = BeautifulSoup(html, 'lxml').find('table', {'class': 'proxy-server-table'})
             table = html.find_all('tr') if html is not None else []
         except Exception as e:
             print('[%s][Spider][CoderBusy]Error:' % get_current_time(), e)
@@ -49,5 +47,5 @@ class SpiderCoderBusy(threading.Thread):
         self.result = crawl()
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     crawl()

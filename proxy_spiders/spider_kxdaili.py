@@ -23,11 +23,10 @@ def crawl():
         page = 1
         while page <= 10:
             try:
-                html = requests.get(url % (page), headers=headers, timeout=1000).text.encode('ISO-8859-1').decode('utf-8',
-                                                                                                                'ignore')
+                html = requests.get(url % (page), headers=headers, timeout=30).text.encode('ISO-8859-1').decode('utf-8', 'ignore')
                 page += 1
-                table = BeautifulSoup(html, 'lxml').find(
-                    'tbody').find_all('tr')
+                html = BeautifulSoup(html, 'lxml').find('tbody')
+                table = html.find_all('tr') if html is not None else []
             except Exception as e:
                 print('[%s][Spider][kxdaili]ERROR!' % get_current_time(), e)
                 continue
@@ -50,3 +49,6 @@ class SpiderKxdaili(threading.Thread):
 
     def run(self):
         self.result = crawl()
+
+if __name__ == '__main__':
+    crawl()
