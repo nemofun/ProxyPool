@@ -83,6 +83,7 @@ if __name__ == '__main__':
                 result += task.result
             except:
                 continue
+        result = list(set(result))
         while (len(result)):
             num = 0
             while (num < 50):
